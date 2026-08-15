@@ -1,0 +1,50 @@
+[
+  {
+    "id": "adaptxfit",
+    "width": 1440,
+    "height": 900,
+    "previewVariants": [
+      { "filename": "adaptxfit-768.png", "width": 768 }
+    ],
+    "detailVariants": [
+      { "filename": "adaptxfit-detail-1440.png", "width": 1440 }
+    ],
+    "detailOriginal": { "filename": "adaptxfit.png", "width": 1440 }
+  },
+  {
+    "id": "sustainlabs",
+    "width": 1440,
+    "height": 900,
+    "previewVariants": [
+      { "filename": "sustainlabs-768.png", "width": 768 }
+    ],
+    "detailVariants": [
+      { "filename": "sustainlabs-detail-1440.png", "width": 1440 }
+    ],
+    "detailOriginal": { "filename": "sustainlabs.png", "width": 1440 }
+  },
+  {
+    "id": "gyangrow",
+    "width": 1440,
+    "height": 900,
+    "previewVariants": [
+      { "filename": "gyangrow-768.png", "width": 768 }
+    ],
+    "detailVariants": [
+      { "filename": "gyangrow-detail-1440.png", "width": 1440 }
+    ],
+    "detailOriginal": { "filename": "gyangrow.png", "width": 1440 }
+  },
+  {
+    "id": "intellitrace",
+    "width": 1440,
+    "height": 900,
+    "previewVariants": [
+      { "filename": "intellitrace-768.png", "width": 768 }
+    ],
+    "detailVariants": [
+      { "filename": "intellitrace-detail-1440.png", "width": 1440 }
+    ],
+    "detailOriginal": { "filename": "intellitrace.png", "width": 1440 }
+  }
+]

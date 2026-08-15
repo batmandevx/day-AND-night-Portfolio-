@@ -1,0 +1,655 @@
+        <div
+            id="intro-blackout"
+            aria-hidden="true"
+            style="
+                position: fixed;
+                inset: 0;
+                z-index: 2147483647;
+                background: #000;
+                pointer-events: none;
+            "
+        ></div>
+
+        <div id="loading-screen" class="loading-screen">
+            <div class="loading-screen__fog"></div>
+            <div class="loading-screen__motion">
+                <div class="loading-screen__ring"></div>
+            </div>
+            <div class="loading-screen__pulse"></div>
+            <span class="loading-screen__status" aria-hidden="true">Preparing experience…</span>
+            <span
+                class="seo-only loading-screen__announcement"
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+            >
+                Preparing experience…
+            </span>
+            <div class="loading-screen__error" role="alert" hidden>
+                <h2 class="loading-screen__error-title">Unable to load the experience</h2>
+                <p class="loading-screen__error-message">
+                    Some required site files could not be loaded. This can happen briefly during a
+                    new deployment or when the connection is interrupted.
+                </p>
+                <button class="loading-screen__retry" type="button" data-loading-retry>
+                    Reload page
+                </button>
+            </div>
+        </div>
+
+        <div id="html-loading-cursor" class="html-loading-cursor" aria-hidden="true">
+            <span class="html-loading-cursor__glow"></span>
+            <span class="html-loading-cursor__core"></span>
+            <span class="html-loading-cursor__orbit"></span>
+        </div>
+
+        <a class="skip-link" href="#experience">Skip to main content</a>
+
+        <nav style="opacity: 0" class="nav">
+            <ul class="nav__link-wrapper-container">
+                <li class="nav__link-wrapper">
+                    <a class="nav__link" href="#intro" data-scroll="#intro"> INTRO </a>
+                </li>
+                <li class="nav__link-wrapper">
+                    <a class="nav__link" href="#experience" data-scroll="#experience">
+                        EXPERIENCE
+                    </a>
+                </li>
+                <li class="nav__link-wrapper">
+                    <a class="nav__link" href="#projects" data-scroll="#projects"> PROJECTS </a>
+                </li>
+                <li class="nav__link-wrapper">
+                    <a class="nav__link" href="#contact" data-scroll="#contact"> CONTACT </a>
+                </li>
+            </ul>
+            <button
+                id="theme-toggle"
+                type="button"
+                aria-label="Switch to light theme"
+                title="Switch to light theme"
+            >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            </button>
+        </nav>
+
+        <div class="reveal-wrap">
+            <span class="reveal-text"> AI &amp; Full-Stack Engineer </span>
+            <span class="reveal-text">
+                Building
+                <span class="reveal-text__emphasis">intelligent systems end to end</span>
+            </span>
+            <span class="reveal-text">
+                From LLM pipelines to production web apps
+            </span>
+        </div>
+
+        <div id="contact-interface" class="contact-tabs" data-contact-tabs inert aria-hidden="true">
+            <div class="contact-tabs__switch" role="tablist" aria-label="Contact section tabs">
+                <button
+                    class="contact-tabs__tab is-active"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="contact-panel"
+                    id="contact-tab"
+                    data-tab="contact"
+                >
+                    Contact
+                </button>
+
+                <button
+                    class="contact-tabs__tab"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="recommendations-panel"
+                    id="recommendations-tab"
+                    data-tab="recommendations"
+                    tabindex="-1"
+                >
+                    Achievements
+                </button>
+
+                <span class="contact-tabs__glow" aria-hidden="true"></span>
+            </div>
+
+            <div
+                class="contact-tabs__panel is-active"
+                id="contact-panel"
+                role="tabpanel"
+                aria-labelledby="contact-tab"
+                data-panel="contact"
+            >
+                <p class="contact-tabs__intro">
+                    Have a project, opportunity, or idea in mind?
+                    <span class="contact-tabs__intro-emphasis">Let’s talk.</span>
+                </p>
+
+                <img
+                    class="contact-tabs__avatar"
+                    src="/ayush-pic.jpeg"
+                    alt="Portrait of Ayush Upadhyay"
+                    width="120"
+                    height="120"
+                />
+
+                <form data-contact-form aria-label="Contact Ayush" novalidate>
+                    <div class="form-group">
+                        <label for="contact-name">Name</label>
+                        <input
+                            id="contact-name"
+                            type="text"
+                            name="name"
+                            autocomplete="name"
+                            aria-describedby="contact-name-error"
+                            required
+                        />
+                        <p
+                            id="contact-name-error"
+                            class="form-field__error"
+                            data-field-error="name"
+                            hidden
+                        ></p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact-email">Email</label>
+                        <input
+                            id="contact-email"
+                            type="email"
+                            name="email"
+                            autocomplete="email"
+                            aria-describedby="contact-email-error"
+                            required
+                        />
+                        <p
+                            id="contact-email-error"
+                            class="form-field__error"
+                            data-field-error="email"
+                            hidden
+                        ></p>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group__label-row">
+                            <label for="contact-message">Message</label>
+                        </div>
+                        <textarea
+                            id="contact-message"
+                            name="message"
+                            rows="5"
+                            autocomplete="off"
+                            aria-describedby="contact-message-error"
+                            required
+                        ></textarea>
+                        <p
+                            id="contact-message-error"
+                            class="form-field__error"
+                            data-field-error="message"
+                            hidden
+                        ></p>
+                    </div>
+
+                    <button class="contact-action" type="submit" data-contact-submit>
+                        <span class="contact-action__label" data-contact-submit-label>
+                            Send message
+                        </span>
+                        <span class="contact-action__progress" data-contact-submit-progress hidden>
+                            Sending…
+                        </span>
+                    </button>
+                    <p
+                        class="contact-form__status"
+                        data-contact-form-status
+                        role="status"
+                        aria-live="polite"
+                        aria-atomic="true"
+                    ></p>
+                </form>
+            </div>
+
+            <div
+                class="contact-tabs__panel"
+                id="recommendations-panel"
+                role="tabpanel"
+                aria-labelledby="recommendations-tab"
+                data-panel="recommendations"
+                hidden
+            >
+                <p class="contact-tabs__intro">
+                    A few
+                    <span class="contact-tabs__intro-emphasis">milestones &amp; achievements</span>
+                    from the journey so far.
+                </p>
+                <div class="recommendation-wall">
+                    <article class="recommendation-card recommendation-card--featured">
+                        <p class="recommendation-card__quote">
+                            “2nd place — Tata InnoVent 2026, among 2,822 teams and 10,247
+                            innovators, for NeuroDrive, an agentic self-healing EV ecosystem.”
+                        </p>
+                        <div class="recommendation-card__person">
+                            <p class="recommendation-card__author">Tata InnoVent 2026</p>
+                            <p class="recommendation-card__role">National Innovation Challenge · 2nd Place</p>
+                            <p class="recommendation-card__meta"><span>2026</span><span>NeuroDrive</span></p>
+                        </div>
+                        <details class="recommendation-card__details">
+                            <summary>
+                                <span class="recommendation-card__details-label--collapsed">View details</span>
+                                <span class="recommendation-card__details-label--expanded">Hide details</span>
+                            </summary>
+                            <p>NeuroDrive is an agentic self-healing EV ecosystem that cut simulated fleet downtime by 65%, built with Python, agentic AI, AWS, and IoT.</p>
+                        </details>
+                    </article>
+
+                    <article class="recommendation-card">
+                        <p class="recommendation-card__quote">
+                            “17x hackathon winner — Samsung Solve for Tomorrow, Annam AI IIT Ropar,
+                            HackHazards, AWS 10K AIdeas, IntelliTrace (Indian Bank) and more.”
+                        </p>
+                        <div class="recommendation-card__person">
+                            <p class="recommendation-card__author">Hackathons</p>
+                            <p class="recommendation-card__role">17 Wins · National &amp; International</p>
+                            <p class="recommendation-card__meta"><span>2024–2026</span><span>Winner</span></p>
+                        </div>
+                        <details class="recommendation-card__details">
+                            <summary>
+                                <span class="recommendation-card__details-label--collapsed">View details</span>
+                                <span class="recommendation-card__details-label--expanded">Hide details</span>
+                            </summary>
+                            <p>Seventeen hackathon victories spanning AI, fintech, sustainability, and cloud — including Samsung Solve for Tomorrow, Annam AI at IIT Ropar, HackHazards, AWS 10K AIdeas, and IntelliTrace by Indian Bank.</p>
+                        </details>
+                    </article>
+
+                    <article class="recommendation-card">
+                        <p class="recommendation-card__quote">
+                            “3 patents (1 granted) — Regenerative Power System for Vehicles
+                            (No. 202541101828 A), Selective Active Noise Cancellation, and BB-KDF
+                            behavioral biometric key derivation.”
+                        </p>
+                        <div class="recommendation-card__person">
+                            <p class="recommendation-card__author">Patents</p>
+                            <p class="recommendation-card__role">3 Filed · 1 Granted</p>
+                            <p class="recommendation-card__meta"><span>2025</span><span>Inventor</span></p>
+                        </div>
+                        <details class="recommendation-card__details">
+                            <summary>
+                                <span class="recommendation-card__details-label--collapsed">View details</span>
+                                <span class="recommendation-card__details-label--expanded">Hide details</span>
+                            </summary>
+                            <p>Granted patent: Regenerative Power System for Vehicles (No. 202541101828 A). Filed: Selective Active Noise Cancellation; BB-KDF — a behavioral biometric key derivation function.</p>
+                        </details>
+                    </article>
+
+                    <article class="recommendation-card">
+                        <p class="recommendation-card__quote">
+                            “3 IEEE publications — Efficient Pruning in Subset Sum Backtracking
+                            (CICT 2025), AI-Driven Resource Optimization for 5G/6G, and Solid-State
+                            Battery Degradation Prediction.”
+                        </p>
+                        <div class="recommendation-card__person">
+                            <p class="recommendation-card__author">IEEE Publications</p>
+                            <p class="recommendation-card__role">3 Peer-Reviewed Papers</p>
+                            <p class="recommendation-card__meta"><span>2025</span><span>Author</span></p>
+                        </div>
+                        <details class="recommendation-card__details">
+                            <summary>
+                                <span class="recommendation-card__details-label--collapsed">View details</span>
+                                <span class="recommendation-card__details-label--expanded">Hide details</span>
+                            </summary>
+                            <p>Published research on algorithmic pruning for subset-sum backtracking (CICT 2025), AI-driven resource optimization for 5G/6G networks, and solid-state battery degradation prediction.</p>
+                        </details>
+                    </article>
+
+                    <article class="recommendation-card">
+                        <p class="recommendation-card__quote">
+                            “Innovation Ambassador — Ministry of Education, Government of India.”
+                        </p>
+                        <div class="recommendation-card__person">
+                            <p class="recommendation-card__author">Innovation Ambassador</p>
+                            <p class="recommendation-card__role">Ministry of Education · Govt. of India</p>
+                            <p class="recommendation-card__meta"><span>2025</span><span>Ambassador</span></p>
+                        </div>
+                        <details class="recommendation-card__details">
+                            <summary>
+                                <span class="recommendation-card__details-label--collapsed">View details</span>
+                                <span class="recommendation-card__details-label--expanded">Hide details</span>
+                            </summary>
+                            <p>Recognized as an Innovation Ambassador by the Ministry of Education, Government of India, for fostering innovation and entrepreneurship on campus.</p>
+                        </details>
+                    </article>
+
+                    <article class="recommendation-card">
+                        <p class="recommendation-card__quote">
+                            “Founder &amp; organizer — HackFinity (1,550+ participants, 65+
+                            countries) and Nexora Hacks 2026 ($7,500 prize pool, 695 participants,
+                            judges from Apple, Meta, Netflix &amp; AWS).”
+                        </p>
+                        <div class="recommendation-card__person">
+                            <p class="recommendation-card__author">HackFinity &amp; Nexora Hacks</p>
+                            <p class="recommendation-card__role">Founder &amp; Organizer · Global Hackathons</p>
+                            <p class="recommendation-card__meta"><span>2025–2026</span><span>Organizer</span></p>
+                        </div>
+                        <details class="recommendation-card__details">
+                            <summary>
+                                <span class="recommendation-card__details-label--collapsed">View details</span>
+                                <span class="recommendation-card__details-label--expanded">Hide details</span>
+                            </summary>
+                            <p>Founded and organized HackFinity with 1,550+ participants from 65+ countries, and Nexora Hacks 2026 with a $7,500 prize pool, 695 participants, and judges from Apple, Meta, Netflix, and AWS.</p>
+                        </details>
+                    </article>
+                </div>
+
+                <a
+                    class="contact-action recommendation-wall__linkedin"
+                    href="https://linkedin.com/in/ayushdevai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View on LinkedIn
+                </a>
+            </div>
+
+            <footer class="contact-tabs__footer">
+                <nav
+                    class="social-links"
+                    data-social-links
+                    aria-label="Social and professional links"
+                >
+                    <a
+                        class="social-links__link"
+                        href="mailto:ayushdevxai@gmail.com"
+                        aria-label="Send an email to Ayush (opens email application)"
+                    >
+                        <span
+                            class="social-links__icon social-links__icon--email"
+                            aria-hidden="true"
+                        ></span>
+                        <span class="social-links__label">Email</span>
+                    </a>
+                    <a
+                        class="social-links__link"
+                        href="https://github.com/batmandevx"
+                        aria-label="Visit Ayush's GitHub profile (opens in a new tab)"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span
+                            class="social-links__icon social-links__icon--github"
+                            aria-hidden="true"
+                        ></span>
+                        <span class="social-links__label">GitHub</span>
+                    </a>
+                    <a
+                        class="social-links__link"
+                        href="https://linkedin.com/in/ayushdevai"
+                        aria-label="Visit Ayush's LinkedIn profile (opens in a new tab)"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <span
+                            class="social-links__icon social-links__icon--linkedin"
+                            aria-hidden="true"
+                        ></span>
+                        <span class="social-links__label">LinkedIn</span>
+                    </a>
+                    <a
+                        class="social-links__link"
+                        href="/Ayush_Upadhyay_Resume.pdf"
+                        aria-label="Download Ayush's CV as a PDF"
+                        download
+                    >
+                        <span
+                            class="social-links__icon social-links__icon--download"
+                            aria-hidden="true"
+                        ></span>
+                        <span class="social-links__label">CV</span>
+                    </a>
+                </nav>
+            </footer>
+        </div>
+
+        <canvas class="webgl" aria-hidden="true"></canvas>
+
+        <div class="scroll-cue" aria-hidden="true">
+            <svg class="scroll-cue__mouse" viewBox="0 0 32 52">
+                <rect
+                    class="scroll-cue__outline"
+                    x="0.75"
+                    y="0.75"
+                    width="30.5"
+                    height="50.5"
+                    rx="15.25"
+                    stroke="currentColor"
+                />
+                <rect
+                    class="scroll-cue__dot"
+                    x="14.4"
+                    y="9"
+                    width="3.2"
+                    height="6"
+                    rx="1.6"
+                    fill="currentColor"
+                />
+                <circle
+                    class="scroll-cue__satellite scroll-cue__satellite--primary"
+                    cx="31.25"
+                    cy="26"
+                    r="1.5"
+                    fill="currentColor"
+                />
+                <circle
+                    class="scroll-cue__satellite scroll-cue__satellite--secondary"
+                    cx="0.75"
+                    cy="26"
+                    r="0.9"
+                    fill="currentColor"
+                />
+            </svg>
+        </div>
+
+        <div class="project-cue" aria-hidden="true">
+            <span class="project-cue__star">✦</span>
+            <span class="project-cue__label">Select a project star to learn more</span>
+        </div>
+
+        <div id="smooth-wrapper">
+            <main id="smooth-content" tabindex="-1">
+                <section id="intro">
+                    <div class="seo-only">
+                        <h1>Ayush Upadhyay — AI &amp; Full-Stack Engineer</h1>
+                        <p>
+                            I build intelligent systems end to end — from LLM pipelines to
+                            production web apps. Explore my experience, projects, and skills.
+                        </p>
+                    </div>
+                </section>
+
+                <section id="experience" class="experience" tabindex="-1">
+                    <h2 class="seo-only">Professional experience, education and certification</h2>
+
+                    <div class="experience__row">
+                        <div class="experience__meta">
+                            <div class="experience__period">May 2026 — Jul 2026</div>
+                            <div class="experience__organization">Microsoft · Hyderabad</div>
+                        </div>
+
+                        <div class="experience__details">
+                            <h3 class="experience__role">Applied Scientist Intern</h3>
+                            <p class="experience__desc">
+                                Built a cohort-based recommendation engine for Microsoft 365 Copilot
+                                upskilling in Viva Learning. Designed a synthetic data pipeline on
+                                Azure ML and benchmarked 9 clustering approaches.
+                            </p>
+                            <p class="experience__desc experience__desc--technologies">
+                                <span class="experience__label">Technologies:</span> Python, Azure ML, Clustering, Recommender Systems
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="experience__row">
+                        <div class="experience__meta">
+                            <div class="experience__period">Jan 2026 — Mar 2026</div>
+                            <div class="experience__organization">Tenchi Consultation · Dubai</div>
+                        </div>
+
+                        <div class="experience__details">
+                            <h3 class="experience__role">Full Stack AI Developer</h3>
+                            <p class="experience__desc">
+                                Architected the SmartOrder Engine over SAP S/4HANA for FMCG
+                                distributors across UAE, Qatar, and Saudi Arabia — invoice OCR,
+                                real-time inventory, and a Gemini 2.0 Flash demand-forecasting
+                                REST API.
+                            </p>
+                            <p class="experience__desc experience__desc--technologies">
+                                <span class="experience__label">Technologies:</span> FastAPI, SAP S/4HANA, Gemini, OCR
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="experience__row">
+                        <div class="experience__meta">
+                            <div class="experience__period">Jan 2026 — Mar 2026</div>
+                            <div class="experience__organization">FlowbitAI · Germany</div>
+                        </div>
+
+                        <div class="experience__details">
+                            <h3 class="experience__role">AI Full Stack Developer</h3>
+                            <p class="experience__desc">
+                                Redesigned the document OCR pipeline around a CNN-Transformer
+                                hybrid (+35% accuracy, −40% cost), served through async FastAPI,
+                                Redis, and AWS Lambda at 50k+ pages/month with sub-2s latency.
+                            </p>
+                            <p class="experience__desc experience__desc--technologies">
+                                <span class="experience__label">Technologies:</span> FastAPI, Redis, AWS Lambda, CNN/Transformers
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="experience__row">
+                        <div class="experience__meta">
+                            <div class="experience__period">May 2025 — Aug 2025</div>
+                            <div class="experience__organization">Nokia</div>
+                        </div>
+
+                        <div class="experience__details">
+                            <h3 class="experience__role">AI Developer Intern</h3>
+                            <p class="experience__desc">
+                                Deployed XGBoost and LSTM predictive-maintenance models across 12
+                                5G/6G clusters, cutting downtime 30%, backed by Kafka pipelines
+                                ingesting 1M+ telemetry records per day.
+                            </p>
+                            <p class="experience__desc experience__desc--technologies">
+                                <span class="experience__label">Technologies:</span> XGBoost, LSTM, Kafka, Python
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="experience__row">
+                        <div class="experience__meta">
+                            <div class="experience__period">Apr 2025 — Nov 2025</div>
+                            <div class="experience__organization">Annam AI · IIT Ropar</div>
+                        </div>
+
+                        <div class="experience__details">
+                            <h3 class="experience__role">AI/ML Research Intern</h3>
+                            <p class="experience__desc">
+                                Trained computer vision models to 92% accuracy on limited-sample
+                                agricultural datasets, achieving 40% faster convergence through
+                                transfer learning.
+                            </p>
+                            <p class="experience__desc experience__desc--technologies">
+                                <span class="experience__label">Technologies:</span> TensorFlow, PyTorch, Transfer Learning
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="experience__row">
+                        <div class="experience__meta">
+                            <div class="experience__period">May 2025 — Jul 2025</div>
+                            <div class="experience__organization">Real IT Solutions</div>
+                        </div>
+
+                        <div class="experience__details">
+                            <h3 class="experience__role">AI Software Engineer Intern</h3>
+                            <p class="experience__desc">
+                                Shipped full-stack AI applications in React, Node.js, and FastAPI
+                                at 99.9% uptime, with CI/CD pipelines that cut the deploy cycle
+                                by 85%.
+                            </p>
+                            <p class="experience__desc experience__desc--technologies">
+                                <span class="experience__label">Technologies:</span> React, Node.js, FastAPI, GitHub Actions
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="experience__row">
+                        <div class="experience__meta">
+                            <div class="experience__period">2023 — 2027</div>
+                            <div class="experience__organization">Vellore Institute of Technology · Chennai</div>
+                        </div>
+
+                        <div class="experience__details">
+                            <h3 class="experience__role">B.Tech — Computer Science &amp; Engineering (AI &amp; ML)</h3>
+                            <p class="experience__desc">
+                                Pursuing a Bachelor of Technology in Computer Science and
+                                Engineering with a specialization in Artificial Intelligence and
+                                Machine Learning.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="experience__row">
+                        <div class="experience__meta">
+                            <div class="experience__period">Certifications</div>
+                            <div class="experience__organization">IBM · Microsoft · AWS · GitHub · AMD</div>
+                        </div>
+
+                        <div class="experience__details">
+                            <h3 class="experience__role">Professional Certifications</h3>
+                            <p class="experience__desc">
+                                IBM Generative AI, Microsoft AI Fundamentals, AWS Cloud
+                                Practitioner, GitHub Professional, LangChain &amp; LangGraph, and
+                                AMD AI Developer.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="experience__section-spacer" aria-hidden="true"></div>
+                </section>
+
+                <section id="projects"></section>
+                <section id="contact"></section>
+            </main>
+        </div>
+        <div class="cursor-sound-label" aria-hidden="true" hidden>
+            <span class="cursor-sound-label__content">Click to enable sound</span>
+        </div>
+        <div class="sound-controls">
+            <p class="music-attribution">
+                Music:
+                <a
+                    href="https://www.scottbuckley.com.au/library/titan/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    “Titan” by Scott Buckley
+                </a>
+                —
+                <a
+                    href="https://creativecommons.org/licenses/by/4.0/"
+                    target="_blank"
+                    rel="noopener noreferrer license"
+                >
+                    CC BY 4.0
+                </a>
+            </p>
+            <button
+                class="sound-toggle"
+                type="button"
+                aria-label="Enable sound"
+                aria-pressed="false"
+                data-sound-state="disabled"
+            >
+                <span class="sound-toggle__indicator" aria-hidden="true"></span>
+            </button>
+        </div>
