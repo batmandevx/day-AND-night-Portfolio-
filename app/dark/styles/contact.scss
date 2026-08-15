@@ -1105,6 +1105,6 @@ body:has(.contact-tabs:not([aria-hidden='true'])) .nav__link-wrapper-container::
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 0.75rem 0 0.5rem;
-    min-height: 20rem;
+    margin: 0 0 0.5rem;
+    min-height: auto;
 }
