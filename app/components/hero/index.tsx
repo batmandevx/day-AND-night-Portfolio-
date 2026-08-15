@@ -1,8 +1,6 @@
 'use client';
 
-import { Text } from "@react-three/drei";
-
-import { useProgress } from "@react-three/drei";
+import { Html, useProgress } from "@react-three/drei";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
@@ -10,9 +8,10 @@ import CloudContainer from "../models/Cloud";
 import FloatingShapes from "../models/FloatingShapes";
 import StarsContainer from "../models/Stars";
 import WindowModel from "../models/WindowModel";
+import ShinyText from "../ui/shiny-text";
 
 const Hero = () => {
-  const titleRef = useRef<THREE.Mesh>(null);
+  const titleRef = useRef<THREE.Group>(null);
   const { progress } = useProgress();
 
   useEffect(() => {
@@ -20,7 +19,6 @@ const Hero = () => {
       gsap.fromTo(titleRef.current.position, {
         y: -10,
         duration: 1,
-        // delay: 1.5,
       }, {
         y: 0,
         duration: 3
@@ -28,14 +26,30 @@ const Hero = () => {
     }
   }, [progress]);
 
-  const fontProps = {
-    font: "./soria-font.ttf",
-    fontSize: 1.2,
-  };
-
   return (
     <>
-      <Text position={[0, 2, -10]} {...fontProps} ref={titleRef}>Hi, I am Ayush Upadhyay.</Text>
+      <group position={[0, 2, -10]} ref={titleRef}>
+        <Html
+          center
+          style={{
+            fontFamily: 'var(--font-soria), Arial, sans-serif',
+            whiteSpace: 'nowrap',
+            pointerEvents: 'none',
+            userSelect: 'none',
+          }}
+        >
+          <ShinyText
+            text="Hi, I am Ayush Upadhyay."
+            color="#ffffff"
+            shineColor="#ffd700"
+            speed={2.5}
+            spread={120}
+            direction="left"
+            pauseOnHover={false}
+            className="text-5xl font-bold md:text-7xl"
+          />
+        </Html>
+      </group>
       <StarsContainer />
       <CloudContainer/>
       <FloatingShapes/>
