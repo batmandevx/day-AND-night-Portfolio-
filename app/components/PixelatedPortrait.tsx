@@ -4,14 +4,11 @@ import { PixelatedCanvas } from "./ui/pixelated-canvas";
 
 export default function PixelatedPortrait() {
   return (
-    <div className="pointer-events-auto my-10 flex w-full flex-col items-center justify-center">
-      <h3 className="mb-4 text-center font-[Urbanist] text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
-        Interactive Portrait
-      </h3>
+    <div className="pointer-events-auto flex w-full items-center justify-center">
       <PixelatedCanvas
         src="/ayush-pic.jpeg"
-        width={240}
-        height={320}
+        width={320}
+        height={400}
         cellSize={4}
         dotScale={0.85}
         shape="square"
@@ -29,9 +26,6 @@ export default function PixelatedPortrait() {
         tintStrength={0.15}
         className="rounded-xl border border-neutral-800 shadow-lg"
       />
-      <p className="mt-4 max-w-md text-center text-xs text-white/40">
-        Move your cursor over the portrait.
-      </p>
     </div>
   );
 }

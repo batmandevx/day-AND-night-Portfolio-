@@ -125,87 +125,7 @@
                     <span class="contact-tabs__intro-emphasis">Let’s talk.</span>
                 </p>
 
-                <img
-                    class="contact-tabs__avatar"
-                    src="/ayush-pic.jpeg"
-                    alt="Portrait of Ayush Upadhyay"
-                    width="120"
-                    height="120"
-                />
-
-                <form data-contact-form aria-label="Contact Ayush" novalidate>
-                    <div class="form-group">
-                        <label for="contact-name">Name</label>
-                        <input
-                            id="contact-name"
-                            type="text"
-                            name="name"
-                            autocomplete="name"
-                            aria-describedby="contact-name-error"
-                            required
-                        />
-                        <p
-                            id="contact-name-error"
-                            class="form-field__error"
-                            data-field-error="name"
-                            hidden
-                        ></p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="contact-email">Email</label>
-                        <input
-                            id="contact-email"
-                            type="email"
-                            name="email"
-                            autocomplete="email"
-                            aria-describedby="contact-email-error"
-                            required
-                        />
-                        <p
-                            id="contact-email-error"
-                            class="form-field__error"
-                            data-field-error="email"
-                            hidden
-                        ></p>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="form-group__label-row">
-                            <label for="contact-message">Message</label>
-                        </div>
-                        <textarea
-                            id="contact-message"
-                            name="message"
-                            rows="5"
-                            autocomplete="off"
-                            aria-describedby="contact-message-error"
-                            required
-                        ></textarea>
-                        <p
-                            id="contact-message-error"
-                            class="form-field__error"
-                            data-field-error="message"
-                            hidden
-                        ></p>
-                    </div>
-
-                    <button class="contact-action" type="submit" data-contact-submit>
-                        <span class="contact-action__label" data-contact-submit-label>
-                            Send message
-                        </span>
-                        <span class="contact-action__progress" data-contact-submit-progress hidden>
-                            Sending…
-                        </span>
-                    </button>
-                    <p
-                        class="contact-form__status"
-                        data-contact-form-status
-                        role="status"
-                        aria-live="polite"
-                        aria-atomic="true"
-                    ></p>
-                </form>
+                <div id="react-contact-portrait" class="react-contact-portrait"></div>
             </div>
 
             <div
@@ -408,8 +328,6 @@
                     </a>
                 </nav>
             </footer>
-
-            <div id="react-contact-portrait" class="react-contact-portrait"></div>
         </div>
 
         <canvas class="webgl" aria-hidden="true"></canvas>

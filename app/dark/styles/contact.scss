@@ -1099,3 +1099,12 @@ body:has(.contact-tabs:not([aria-hidden='true'])) .nav__link-wrapper-container::
     border-radius: 50%;
     object-fit: cover;
 }
+
+.react-contact-portrait {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 1.5rem 0 0.5rem;
+    min-height: 24rem;
+}
