@@ -7,8 +7,8 @@ export default function PixelatedPortrait() {
     <div className="pointer-events-auto flex w-full items-center justify-center">
       <PixelatedCanvas
         src="/ayush-pic.jpeg"
-        width={320}
-        height={400}
+        width={260}
+        height={330}
         cellSize={4}
         dotScale={0.85}
         shape="square"
