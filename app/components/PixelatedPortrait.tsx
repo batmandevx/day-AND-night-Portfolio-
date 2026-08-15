@@ -4,14 +4,14 @@ import { PixelatedCanvas } from "./ui/pixelated-canvas";
 
 export default function PixelatedPortrait() {
   return (
-    <section className="pointer-events-auto z-[10001] flex w-full flex-col items-center justify-center bg-black py-16 md:py-24">
-      <h3 className="mb-8 text-center font-[Urbanist] text-sm font-semibold uppercase tracking-[0.2em] text-white/60">
+    <div className="pointer-events-auto my-10 flex w-full flex-col items-center justify-center">
+      <h3 className="mb-4 text-center font-[Urbanist] text-xs font-semibold uppercase tracking-[0.2em] text-white/50">
         Interactive Portrait
       </h3>
       <PixelatedCanvas
         src="/ayush-pic.jpeg"
-        width={420}
-        height={560}
+        width={240}
+        height={320}
         cellSize={4}
         dotScale={0.85}
         shape="square"
@@ -29,9 +29,9 @@ export default function PixelatedPortrait() {
         tintStrength={0.15}
         className="rounded-xl border border-neutral-800 shadow-lg"
       />
-      <p className="mt-6 max-w-md text-center text-sm text-white/40">
-        Move your cursor over the portrait — the pixels swirl and jitter around your pointer.
+      <p className="mt-4 max-w-md text-center text-xs text-white/40">
+        Move your cursor over the portrait.
       </p>
-    </section>
+    </div>
   );
 }

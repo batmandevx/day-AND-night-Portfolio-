@@ -328,7 +328,6 @@ export function createFloatingTextParticleGeometry(
 
     const lineGeometries = [
         ...createTrackedLine('scroll', italicFont, 3.2, 0.4, 8, 0.24, 0, -lineHeight),
-        ...createTrackedLine('TO DIVE IN', regularFont, 1.45, 0.5, 4, 0.28, 0.82, -lineHeight * 2),
     ];
 
     const merged = mergeGeometries(lineGeometries);

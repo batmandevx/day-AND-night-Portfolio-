@@ -2,9 +2,9 @@
 
 import dynamic from 'next/dynamic';
 import { useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
 
 import { switchMode } from '../mode';
-import OptionWheel from './components/OptionWheel/OptionWheel';
 import criticalCss from './critical-css.txt';
 import skeletonHtml from './skeleton.html';
 
@@ -118,92 +118,32 @@ const DarkExperience = () => {
             console.error('Dark experience failed to boot', error);
             window.__portfolioStartup?.fail();
         });
+
+        // Mount React enhancements into placeholders inside the scroll flow.
+        const mountEnhancements = () => {
+            const nameHost = document.getElementById('react-contact-name');
+            const portraitHost = document.getElementById('react-contact-portrait');
+            if (nameHost && !nameHost.dataset.mounted) {
+                nameHost.dataset.mounted = 'true';
+                createRoot(nameHost).render(<TextHoverEffectSection />);
+            }
+            if (portraitHost && !portraitHost.dataset.mounted) {
+                portraitHost.dataset.mounted = 'true';
+                createRoot(portraitHost).render(<PixelatedPortrait />);
+            }
+        };
+
+        // Mount after the dark world boots and the loading screen is gone.
+        bootPromise?.then(() => {
+            setTimeout(mountEnhancements, 1200);
+        });
     }, []);
 
     return (
-        <>
-            <div
-                id="dark-experience"
-                dangerouslySetInnerHTML={{ __html: `<style>${criticalCss}</style>${skeletonHtml}` }}
-            />
-            <div
-                className="pointer-events-auto fixed bottom-[38vh] left-0 z-[10001] h-[32vh] w-full"
-                style={{
-                    background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%)'
-                }}
-            >
-                <TextHoverEffectSection />
-            </div>
-            <div
-                aria-label="Project selector"
-                className="pointer-events-auto fixed bottom-0 left-0 z-[10000] h-[38vh] w-full"
-                style={{
-                    background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.6) 50%, transparent 100%)'
-                }}
-            >
-                <div className="pointer-events-none absolute left-6 top-4 z-10 text-white/70 md:left-10 md:top-6">
-                    <span className="block font-[Urbanist] text-xs font-semibold uppercase tracking-[0.2em]">
-                        Explore my work
-                    </span>
-                    <span className="mt-1 block font-[Urbanist] text-[10px] uppercase tracking-wider text-white/40">
-                        scroll / drag / click to select
-                    </span>
-                </div>
-                <OptionWheel
-                    items={[
-                        'CrispRoots',
-                        'AuraTwin',
-                        'VITGROWW',
-                        'Packet Analyzer',
-                        'LOLA',
-                        'EcoMed AI',
-                        'AdaptXFit',
-                        'SustainLabs',
-                        'Gyan Grow',
-                        'IntelliTrace',
-                        'Treasure',
-                        'Portfolio V1'
-                    ]}
-                    defaultSelected={6}
-                    side="left"
-                    textColor="#6b7280"
-                    activeColor="#ffffff"
-                    fontSize={2.2}
-                    spacing={1.35}
-                    curve={0.9}
-                    tilt={7}
-                    blur={1.5}
-                    fade={0.22}
-                    minOpacity={0.08}
-                    smoothing={220}
-                    inset={40}
-                    loop={false}
-                    draggable
-                    soundUrl=""
-                    onChange={(index, item) => {
-                        const routes: Record<string, string> = {
-                            CrispRoots: 'https://github.com/batmandevx/CrispRoots',
-                            AuraTwin: 'https://github.com/batmandevx/AuraTwin',
-                            VITGROWW: 'https://github.com/batmandevx/VITGROWW',
-                            'Packet Analyzer': 'https://github.com/batmandevx/Packet_analyzer',
-                            LOLA: 'https://github.com/batmandevx/LOLA',
-                            'EcoMed AI': 'https://github.com/batmandevx/EcoMedAi-',
-                            AdaptXFit: 'https://adaptxfit.netlify.app',
-                            SustainLabs: 'https://sustainlabs.netlify.app',
-                            'Gyan Grow': 'https://gyan-grow.vercel.app',
-                            IntelliTrace: 'https://intellitrace-hackathon.vercel.app',
-                            Treasure: 'https://github.com/Shivam2005Goel/Treasure.git',
-                            'Portfolio V1': 'https://ayushxupadhyay.netlify.app'
-                        };
-                        const url = routes[item];
-                        if (url) window.open(url, '_blank', 'noopener,noreferrer');
-                    }}
-                />
-            </div>
-            <div className="pointer-events-auto fixed bottom-0 right-0 z-[10002] w-full md:w-[28rem]">
-                <PixelatedPortrait />
-            </div>
-        </>
+        <div
+            id="dark-experience"
+            dangerouslySetInnerHTML={{ __html: `<style>${criticalCss}</style>${skeletonHtml}` }}
+        />
     );
 };
 
