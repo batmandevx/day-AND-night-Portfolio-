@@ -7,8 +7,9 @@ import * as THREE from "three";
 import CloudContainer from "../models/Cloud";
 import FloatingShapes from "../models/FloatingShapes";
 import StarsContainer from "../models/Stars";
-import WindowModel from "../models/WindowModel";
 import ShinyText from "../ui/shiny-text";
+import TextWindow from "./TextWindow";
+import WindowModel from "../models/WindowModel";
 
 const Hero = () => {
   const titleRef = useRef<THREE.Group>(null);
@@ -46,7 +47,7 @@ const Hero = () => {
             spread={120}
             direction="left"
             pauseOnHover={false}
-            className="text-5xl font-bold md:text-7xl"
+            className="text-3xl md:text-4xl"
           />
         </Html>
       </group>
@@ -56,6 +57,7 @@ const Hero = () => {
       <group position={[0, -25, 5.69]}>
         <pointLight castShadow position={[1, 1, -2.5]} intensity={60} distance={10}/>
         <WindowModel receiveShadow/>
+        <TextWindow />
       </group>
     </>
   );

@@ -61,17 +61,55 @@ function AnimatedHeading() {
     );
   }, { scope: ref });
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLHeadingElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const dx = (e.clientX - centerX) / rect.width;
+    const dy = (e.clientY - centerY) / rect.height;
+
+    const chars = ref.current.querySelectorAll('.char');
+    chars.forEach((char, i) => {
+      const depth = (i - chars.length / 2) * 4;
+      gsap.to(char, {
+        x: dx * (20 + depth * 0.3),
+        y: dy * (15 + depth * 0.2),
+        rotateX: -dy * 18,
+        rotateY: dx * 18,
+        duration: 0.4,
+        ease: 'power2.out',
+      });
+    });
+  };
+
+  const handleMouseLeave = () => {
+    if (!ref.current) return;
+    const chars = ref.current.querySelectorAll('.char');
+    gsap.to(chars, {
+      x: 0,
+      y: 0,
+      rotateX: 0,
+      rotateY: 0,
+      duration: 0.6,
+      ease: 'elastic.out(1, 0.4)',
+      stagger: 0.02,
+    });
+  };
+
   const text = 'Moments & Memories';
   return (
     <h2
       ref={ref}
-      className="font-soria text-4xl text-white drop-shadow-sm md:text-6xl"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="font-soria cursor-default text-4xl text-white drop-shadow-sm md:text-6xl"
       style={{ perspective: '800px' }}
     >
       {text.split('').map((char, i) => (
         <span
           key={i}
-          className="char inline-block"
+          className="char inline-block will-change-transform"
           style={{ transformStyle: 'preserve-3d' }}
         >
           {char === ' ' ? '\u00A0' : char}
