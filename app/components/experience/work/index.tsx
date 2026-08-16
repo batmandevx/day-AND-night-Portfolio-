@@ -1,6 +1,6 @@
-import { ScrollControls } from "@react-three/drei";
+import { ScrollControls, useScroll } from "@react-three/drei";
 import { usePortalStore, useScrollStore } from "@stores";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { Memory } from "../../models/Memory";
 import Timeline from "./Timeline";
@@ -8,6 +8,10 @@ import Timeline from "./Timeline";
 const Work = () => {
   const isActive = usePortalStore((state) => state.activePortalId === 'work');
   const { scrollProgress, setScrollProgress } = useScrollStore();
+  const portalScroll = useScroll();
+  const progressRef = useRef(scrollProgress);
+
+  progressRef.current = scrollProgress;
 
   const handleScroll = (event: Event) => {
     const target = event.target as HTMLElement;
@@ -17,31 +21,40 @@ const Work = () => {
     setScrollProgress(progress);
   }
 
-  // Hack: If the portal is active, add the scroll event listener to the scroll
-  // wrapper div. If the portal is not active, remove the scroll event listener.
-  // ScrollControls doesn't work out of the box, so we have to manually handle
-  // the scroll event.
-  useEffect(() => {
-    if (isActive) {
-      const scrollWrapper = document.querySelector('div[style*="z-index: -1"]') as HTMLElement;
-      const originalScrollWrapper = document.querySelector('div[style*="z-index: 1"]') as HTMLElement;
-      setScrollProgress(0);
-      scrollWrapper.addEventListener('scroll', handleScroll)
-      scrollWrapper.style.zIndex = '1';
-      originalScrollWrapper.style.zIndex = '-1';
-    } else {
-      const scrollWrapper = document.querySelector('div[style*="z-index: 1"]') as HTMLElement;
-      const originalScrollWrapper = document.querySelector('div[style*="z-index: -1"]') as HTMLElement;
+  const handleWheel = (event: WheelEvent) => {
+    event.preventDefault();
+    const delta = event.deltaY;
+    const step = delta / 500;
+    const next = Math.min(Math.max(progressRef.current + step, 0), 1);
+    setScrollProgress(next);
+  }
 
-      if (scrollWrapper) {
-        scrollWrapper.scrollTo({ top: 0, behavior: 'smooth' });
-        setScrollProgress(0);
-        scrollWrapper.removeEventListener('scroll', handleScroll);
-        scrollWrapper.style.zIndex = '-1';
-        originalScrollWrapper.style.zIndex = '1';
-      }
+  useEffect(() => {
+    if (!isActive) {
+      setScrollProgress(0);
+      return;
     }
-  }, [isActive]);
+
+    setScrollProgress(0);
+
+    // Try the portal ScrollControls wrapper first.
+    const portalWrapper = portalScroll?.el ?? null;
+    if (portalWrapper) {
+      portalWrapper.addEventListener('scroll', handleScroll);
+      portalWrapper.style.zIndex = '1';
+    }
+
+    // Wheel fallback so the timeline is always scrollable, even if the
+    // ScrollControls wrapper can't be targeted.
+    window.addEventListener('wheel', handleWheel, { passive: false });
+
+    return () => {
+      if (portalWrapper) {
+        portalWrapper.removeEventListener('scroll', handleScroll);
+      }
+      window.removeEventListener('wheel', handleWheel);
+    };
+  }, [isActive, portalScroll]);
 
   return (
     <group>
