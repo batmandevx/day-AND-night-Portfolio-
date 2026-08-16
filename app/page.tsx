@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from "next/dynamic";
-import { useState, useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 
 import CanvasLoader from "./components/common/CanvasLoader";
 import IntroVideo from "./components/IntroVideo";
@@ -14,16 +14,18 @@ import { getMode, PortfolioMode } from "./mode";
 
 const DarkExperience = dynamic(() => import("./dark/DarkExperience"), { ssr: false });
 
-const useMode = () =>
-  useSyncExternalStore<PortfolioMode>(
-    () => () => {},
-    getMode,
-    () => 'light'
-  );
-
 const Home = () => {
-  const mode = useMode();
+  const [mode, setMode] = useState<PortfolioMode | null>(null);
   const [introDone, setIntroDone] = useState(false);
+
+  useEffect(() => {
+    // Reading the persisted theme from localStorage after hydration avoids
+    // a server/client mismatch while still rendering the intro video first.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMode(getMode());
+  }, []);
+
+  if (mode === null) return null;
 
   if (!introDone) {
     return <IntroVideo mode={mode} onComplete={() => setIntroDone(true)} />;

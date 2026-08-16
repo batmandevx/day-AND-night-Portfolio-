@@ -11,7 +11,9 @@ const Work = () => {
   const portalScroll = useScroll();
   const progressRef = useRef(scrollProgress);
 
-  progressRef.current = scrollProgress;
+  useEffect(() => {
+    progressRef.current = scrollProgress;
+  }, [scrollProgress]);
 
   const handleScroll = (event: Event) => {
     const target = event.target as HTMLElement;

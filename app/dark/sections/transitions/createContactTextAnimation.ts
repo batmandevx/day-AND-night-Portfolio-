@@ -82,24 +82,9 @@ export const createContactTextAnimation = (
     const isAtPageBottom = (): boolean =>
         getScrollSmootherMaxScroll(smoother) - smoother.scrollTop() <= PAGE_BOTTOM_TOLERANCE;
 
-    let contactTimeline: gsap.core.Timeline;
     const contactScrollAnimation = config.sectionTextAnimations.contact;
 
-    const syncContactUi = (): void => {
-        const progress = contactTimeline.progress();
-        const isMobilePageBottom = config.isMobile && isAtPageBottom();
-
-        syncContactTabsVisibility(progress);
-        setContactUiEnabled(progress >= CONTACT_FORM_INTERACTION_PROGRESS || isMobilePageBottom);
-    };
-
-    interactiveElements.forEach((element) => {
-        element.inert = true;
-    });
-    setContactUiEnabled(false);
-    gsap.set(socialLinks, { opacity: 0, y: 0 });
-
-    contactTimeline = gsap.timeline({
+    const contactTimeline = gsap.timeline({
         onUpdate: syncContactUi,
         scrollTrigger: {
             id: CONTACT_FORM_REVEAL_TRIGGER_ID,
@@ -108,6 +93,20 @@ export const createContactTextAnimation = (
             onUpdate: syncContactUi,
         },
     });
+
+    function syncContactUi(): void {
+        const progress = contactTimeline.progress();
+        const isMobilePageBottom = config.isMobile && isAtPageBottom();
+
+        syncContactTabsVisibility(progress);
+        setContactUiEnabled(progress >= CONTACT_FORM_INTERACTION_PROGRESS || isMobilePageBottom);
+    }
+
+    interactiveElements.forEach((element) => {
+        element.inert = true;
+    });
+    setContactUiEnabled(false);
+    gsap.set(socialLinks, { opacity: 0, y: 0 });
 
     if (contactTabs) {
         contactTimeline.fromTo(contactTabs, getContactTabsHiddenState(config), {

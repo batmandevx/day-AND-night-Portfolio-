@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 
+const imageCleanupMap = new WeakMap<HTMLImageElement, () => void>();
+
 type PixelatedCanvasProps = {
   src: string;
   width?: number;
@@ -242,7 +244,7 @@ export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
             return [parseInt(m[1], 10), parseInt(m[2], 10), parseInt(m[3], 10)];
           return null;
         };
-        tintRGB = parse(tintColor) as any;
+        tintRGB = parse(tintColor);
       }
 
       for (let y = 0; y < offscreen.height; y += cellSize) {
@@ -498,7 +500,7 @@ export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
         canvasEl.removeEventListener("pointerleave", onPointerLeave);
         if (rafRef.current) cancelAnimationFrame(rafRef.current);
       };
-      (img as any)._cleanup = cleanup;
+      imageCleanupMap.set(img, cleanup);
     };
 
     img.onerror = () => {
@@ -515,13 +517,17 @@ export const PixelatedCanvas: React.FC<PixelatedCanvasProps> = ({
       return () => {
         isCancelled = true;
         window.removeEventListener("resize", onResize);
-        if ((img as any)._cleanup) (img as any)._cleanup();
+        const cleanup = imageCleanupMap.get(img);
+        if (cleanup) cleanup();
+        imageCleanupMap.delete(img);
       };
     }
 
     return () => {
       isCancelled = true;
-      if ((img as any)._cleanup) (img as any)._cleanup();
+      const cleanup = imageCleanupMap.get(img);
+      if (cleanup) cleanup();
+      imageCleanupMap.delete(img);
     };
   }, [
     src,
