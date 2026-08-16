@@ -13,17 +13,25 @@
         <div id="loading-screen" class="loading-screen">
             <div class="loading-screen__fog"></div>
             <div class="loading-screen__motion">
-                <div class="loading-screen__ring"></div>
+                <div class="loading-screen__fog"></div>
+                <img
+                    class="loading-cat-gif"
+                    src="/dark/cat-looking-around.gif"
+                    alt="A cat looking around while the experience loads"
+                    width="240"
+                    height="240"
+                />
             </div>
             <div class="loading-screen__pulse"></div>
-            <span class="loading-screen__status" aria-hidden="true">Preparing experience…</span>
+            <span class="loading-screen__status" aria-hidden="true">Waking up the cat</span>
+            <span class="loading-screen__status-dots" aria-hidden="true">...</span>
             <span
                 class="seo-only loading-screen__announcement"
                 role="status"
                 aria-live="polite"
                 aria-atomic="true"
             >
-                Preparing experience…
+                Waking up the cat, loading experience…
             </span>
             <div class="loading-screen__error" role="alert" hidden>
                 <h2 class="loading-screen__error-title">Unable to load the experience</h2>

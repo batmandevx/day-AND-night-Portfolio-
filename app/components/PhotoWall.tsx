@@ -12,24 +12,9 @@ if (typeof window !== 'undefined') {
 
 const DriftWall = dynamic(() => import('./DriftWall/DriftWall'), { ssr: false });
 
-const PHOTOS = [
-  '/my-pics/pic-01.jpg',
-  '/my-pics/pic-02.jpg',
-  '/my-pics/pic-03.jpg',
-  '/my-pics/pic-04.jpg',
-  '/my-pics/pic-05.jpg',
-  '/my-pics/pic-06.jpg',
-  '/my-pics/pic-07.jpg',
-  '/my-pics/pic-08.jpg',
-  '/my-pics/pic-09.jpg',
-  '/my-pics/pic-10.jpg',
-  '/my-pics/pic-11.jpg',
-  '/my-pics/pic-12.jpg',
-  '/my-pics/pic-13.jpg',
-  '/my-pics/pic-14.jpg',
-  '/my-pics/pic-15.jpg',
-  '/my-pics/pic-16.jpg',
-];
+const PHOTOS = Array.from({ length: 51 }, (_, i) =>
+  `/my-pics/pic-${String(i + 1).padStart(2, '0')}.jpg`
+);
 
 const items = PHOTOS.map((src, i) => ({
   image: src,
