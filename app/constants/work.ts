@@ -38,6 +38,13 @@ export const WORK_TIMELINE: WorkTimelinePoint[] = [
     position: 'left',
   },
   {
+    point: new THREE.Vector3(2, 0, -13),
+    year: '2026',
+    title: 'Calyptus',
+    subtitle: 'Junior AI Engineer',
+    position: 'right',
+  },
+  {
     point: new THREE.Vector3(0, 0, -15),
     year: '2026',
     title: 'Microsoft',

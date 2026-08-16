@@ -33,8 +33,14 @@ export const FOOTER_LINKS: FooterLink[] = [
   },
   {
     name: 'Resume',
-    hoverText: 'Download',
+    hoverText: 'Download latest',
     icon: 'icons/file.svg',
     url: './Ayush_Upadhyay_Resume.pdf',
+  },
+  {
+    name: 'Resume-4',
+    hoverText: 'Download version 4',
+    icon: 'icons/file.svg',
+    url: './Ayush_Upadhyay_Resume-4.pdf',
   }
 ];
